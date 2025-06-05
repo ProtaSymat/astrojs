@@ -14,6 +14,32 @@ export default defineConfig({
     assets: 'assets'
   },
 
+  content: {
+    collections: {
+      blog: {
+        type: 'content',
+        schema: {
+          title: 'string',
+          description: 'string',
+          author: 'string',
+          date: 'date',
+          image: 'string',
+          tags: 'array',
+          featured: 'boolean',
+          slug: 'string'
+        }
+      }
+    }
+  },
+  
+  // Configuration Markdown
+  markdown: {
+    shikiConfig: {
+      theme: 'github-dark',
+      wrap: true
+    }
+  },
+
   image: {
     domains: ["images.unsplash.com", "via.placeholder.com"]
   },

@@ -1,0 +1,399 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+const mainServices = [
+  {
+    title: "Sites Web Vitrine",
+    description: "Des sites web élégants et performants qui reflètent parfaitement votre image de marque et convertissent vos visiteurs en clients.",
+    icon: "🌐",
+    features: [
+      "Design responsive et moderne",
+      "Optimisation SEO avancée", 
+      "Performance et vitesse optimales",
+      "Intégration CMS personnalisée",
+      "Hébergement et maintenance",
+      "Analytics et suivi des performances"
+    ],
+    gradient: "from-blue-600 to-cyan-600",
+    price: "À partir de 2 500€",
+    timeline: "2-4 semaines"
+  },
+  {
+    title: "Applications Web",
+    description: "Applications web sur mesure alliant performance technique et expérience utilisateur exceptionnelle pour digitaliser vos processus.",
+    icon: "⚡",
+    features: [
+      "Architecture scalable et moderne",
+      "Interface utilisateur intuitive",
+      "API REST/GraphQL",
+      "Intégrations tierces avancées",
+      "Authentification sécurisée",
+      "Tableau de bord administrateur"
+    ],
+    gradient: "from-purple-600 to-pink-600",
+    price: "À partir de 5 000€",
+    timeline: "4-8 semaines"
+  },
+  {
+    title: "E-commerce",
+    description: "Boutiques en ligne complètes avec gestion des stocks, paiements sécurisés et analytics pour maximiser vos ventes.",
+    icon: "🛒",
+    features: [
+      "Gestion complète des produits",
+      "Paiements sécurisés multi-devises",
+      "Gestion des stocks automatisée",
+      "Analytics et reporting avancés",
+      "Marketing automation",
+      "Intégration ERP/CRM"
+    ],
+    gradient: "from-green-600 to-emerald-600",
+    price: "À partir de 4 000€",
+    timeline: "3-6 semaines"
+  }
+];
+
+const additionalServices = [
+  {
+    icon: "🎨",
+    title: "UI/UX Design",
+    description: "Conception d'interfaces utilisateur modernes et expériences optimisées",
+    gradient: "from-pink-500 to-rose-500"
+  },
+  {
+    icon: "📱",
+    title: "Applications Mobiles",
+    description: "Applications natives et hybrides pour iOS et Android",
+    gradient: "from-indigo-500 to-purple-500"
+  },
+  {
+    icon: "🔧",
+    title: "Maintenance & Support",
+    description: "Support technique continu et mises à jour régulières",
+    gradient: "from-orange-500 to-red-500"
+  },
+  {
+    icon: "📈",
+    title: "Consulting Digital",
+    description: "Conseil stratégique pour votre transformation digitale",
+    gradient: "from-teal-500 to-cyan-500"
+  },
+  {
+    icon: "⚡",
+    title: "Optimisation Performance",
+    description: "Amélioration des performances et de la vitesse de chargement",
+    gradient: "from-yellow-500 to-orange-500"
+  },
+  {
+    icon: "🔒",
+    title: "Sécurité Web",
+    description: "Audit de sécurité et mise en place de protections avancées",
+    gradient: "from-gray-600 to-gray-800"
+  }
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Découverte & Analyse",
+    description: "Nous analysons vos besoins, votre marché et vos objectifs pour définir la stratégie optimale.",
+    icon: "🔍",
+    duration: "1-2 jours"
+  },
+  {
+    step: "02", 
+    title: "Conception & Design",
+    description: "Création des wireframes, maquettes et prototypes pour valider l'expérience utilisateur.",
+    icon: "🎨",
+    duration: "3-5 jours"
+  },
+  {
+    step: "03",
+    title: "Développement",
+    description: "Développement technique avec technologies modernes et bonnes pratiques de développement.",
+    icon: "⚡",
+    duration: "2-6 semaines"
+  },
+  {
+    step: "04",
+    title: "Tests & Optimisation",
+    description: "Tests complets, optimisation des performances et validation sur tous les appareils.",
+    icon: "🧪",
+    duration: "2-3 jours"
+  },
+  {
+    step: "05",
+    title: "Lancement & Suivi",
+    description: "Mise en ligne, formation et suivi post-lancement pour assurer le succès du projet.",
+    icon: "🚀",
+    duration: "1-2 jours"
+  }
+];
+
+const technologies = [
+  { name: "React", logo: "⚛️", category: "Frontend" },
+  { name: "Vue.js", logo: "💚", category: "Frontend" },
+  { name: "Svelte", logo: "🧡", category: "Frontend" },
+  { name: "Node.js", logo: "💚", category: "Backend" },
+  { name: "Python", logo: "🐍", category: "Backend" },
+  { name: "TypeScript", logo: "🔷", category: "Language" },
+  { name: "Tailwind CSS", logo: "🎨", category: "Styling" },
+  { name: "PostgreSQL", logo: "🐘", category: "Database" },
+  { name: "MongoDB", logo: "🍃", category: "Database" },
+  { name: "AWS", logo: "☁️", category: "Cloud" },
+  { name: "Vercel", logo: "▲", category: "Deployment" },
+  { name: "Docker", logo: "🐳", category: "DevOps" }
+];
+
+const stats = [
+  { number: "3", label: "Services principaux" },
+  { number: "50+", label: "Technologies maîtrisées" },
+  { number: "2-8", label: "Semaines de développement" },
+  { number: "24/7", label: "Support disponible" }
+];
+---
+
+<Layout title="Services - PixelPerfect | Solutions Web Professionnelles">
+  <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+      <div class="absolute top-40 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+      <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div class="text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          Nos
+          <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Services
+          </span>
+        </h1>
+        <p class="text-xl lg:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Des solutions web complètes et sur mesure pour transformer votre présence digitale. 
+          De la conception au déploiement, nous accompagnons vos projets avec expertise.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <a href="/contact" class="bg-white text-blue-900 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            Demander un devis
+          </a>
+          <a href="#services" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-900 transition-all text-lg">
+            Découvrir nos services
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          {stats.map((stat) => (
+            <div class="text-center">
+              <div class="text-3xl lg:text-4xl font-bold text-white mb-2">{stat.number}</div>
+              <div class="text-blue-200 text-sm lg:text-base">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Nos Services Principaux
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Découvrez nos solutions complètes pour donner vie à vos projets digitaux
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {mainServices.map((service) => (
+          <div class={`bg-white rounded-2xl shadow-xl p-8 relative overflow-hidden group hover:shadow-2xl transition-all duration-300 border border-gray-100`}>
+            <div class={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
+            
+            <div class="relative z-10">
+              <div class="flex items-center mb-6">
+                <div class={`text-4xl mr-4 p-3 rounded-xl bg-gradient-to-br ${service.gradient} text-white shadow-lg`}>
+                  {service.icon}
+                </div>
+                <div>
+                  <h3 class="text-2xl font-bold text-gray-900 mb-2">{service.title}</h3>
+                  <div class="flex items-center gap-4 text-sm text-gray-600">
+                    <span class="font-semibold">{service.price}</span>
+                    <span>•</span>
+                    <span>{service.timeline}</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                {service.description}
+              </p>
+
+              <div class="mb-8">
+                <h4 class="font-semibold text-gray-900 mb-3">Fonctionnalités incluses :</h4>
+                <ul class="space-y-2">
+                  {service.features.map((feature) => (
+                    <li class="flex items-center text-gray-600">
+                      <svg class="w-5 h-5 text-green-500 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <a href="/contact" class={`inline-flex items-center px-6 py-3 bg-gradient-to-r ${service.gradient} text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-200 group-hover:scale-105`}>
+                Découvrir ce service
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Services Complémentaires
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Une gamme complète de services pour accompagner tous vos besoins digitaux
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {additionalServices.map((service) => (
+          <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300 group">
+            <div class={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} text-white text-2xl mb-4 group-hover:scale-110 transition-transform duration-200`}>
+              {service.icon}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Notre Processus de Travail
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Une méthodologie éprouvée pour garantir le succès de votre projet
+        </p>
+      </div>
+
+      <div class="relative">
+        <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+        
+        <div class="space-y-12">
+          {process.map((step, index) => (
+            <div class={`flex flex-col lg:flex-row items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+              <div class={`flex-1 ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}>
+                <div class="bg-white rounded-xl shadow-lg p-8 relative">
+                  <div class="flex items-center mb-4">
+                    <div class="text-3xl mr-4">{step.icon}</div>
+                    <div>
+                      <div class="text-sm font-semibold text-blue-600 mb-1">Étape {step.step}</div>
+                      <h3 class="text-2xl font-bold text-gray-900">{step.title}</h3>
+                    </div>
+                  </div>
+                  <p class="text-gray-600 leading-relaxed mb-4">{step.description}</p>
+                  <div class="flex items-center text-sm text-gray-500">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Durée : {step.duration}
+                  </div>
+                </div>
+              </div>
+              
+              <div class="flex-shrink-0 my-8 lg:my-0">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                  {step.step}
+                </div>
+              </div>
+              
+              <div class="flex-1 hidden lg:block"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Technologies Utilisées
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Nous utilisons les technologies les plus récentes et performantes pour vos projets
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+        {technologies.map((tech) => (
+          <div class="bg-gray-50 rounded-xl p-6 text-center hover:bg-gray-100 transition-colors duration-200 group">
+            <div class="text-4xl mb-3 group-hover:scale-110 transition-transform duration-200">
+              {tech.logo}
+            </div>
+            <h3 class="font-semibold text-gray-900 mb-1">{tech.name}</h3>
+            <p class="text-sm text-gray-600">{tech.category}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gradient-to-br from-blue-900 to-purple-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-6">
+        Prêt à Lancer Votre Projet ?
+      </h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+        Parlons de votre projet et découvrons ensemble comment nous pouvons vous aider à atteindre vos objectifs digitaux.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="bg-white text-blue-900 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          Demander un devis gratuit
+        </a>
+        <a href="/portfolio" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-900 transition-all text-lg">
+          Voir nos réalisations
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.2;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+</style>

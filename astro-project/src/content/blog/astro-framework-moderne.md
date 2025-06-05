@@ -6,9 +6,8 @@ date: 2024-12-15
 image: "https://images.unsplash.com/photo-1667372393119-3d4c48d3aec1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
 tags: ["Astro", "JavaScript", "Performance", "SSG"]
 featured: true
+slug: "astro-framework-moderne"
 ---
-
-# Astro : Le framework qui révolutionne le développement web moderne
 
 Dans le paysage en constante évolution du développement web, **Astro** s'impose comme une solution innovante qui repense fondamentalement la façon dont nous construisons les sites web. Contrairement aux frameworks traditionnels qui envoient beaucoup de JavaScript au navigateur, Astro adopte une approche "JavaScript zéro par défaut" qui révolutionne les performances web.
 
@@ -54,10 +53,11 @@ import SvelteModal from './SvelteModal.svelte';
 ### Écosystème riche
 
 Astro propose plus de **100 intégrations officielles** :
-- Tailwind CSS, UnoCSS pour le styling
-- React, Vue, Svelte, Solid pour les composants
-- Vercel, Netlify, Cloudflare pour le déploiement
-- CMS headless comme Contentful, Strapi, Sanity
+
+- **Styling** : Tailwind CSS, UnoCSS pour le styling
+- **Composants** : React, Vue, Svelte, Solid pour les composants
+- **Déploiement** : Vercel, Netlify, Cloudflare pour le déploiement
+- **CMS** : CMS headless comme Contentful, Strapi, Sanity
 
 ## Architecture unique : Les îlots de composants
 
@@ -78,4 +78,31 @@ import InteractiveWidget from './InteractiveWidget.jsx';
     <nav>...</nav>
   </header>
   
-  <InteractiveWidget client:
+  <InteractiveWidget client:load />
+  
+  <footer>
+    <p>Pied de page statique</p>
+  </footer>
+</main>
+```
+
+## Directives d'hydratation
+
+Astro offre plusieurs stratégies d'hydratation pour optimiser les performances :
+
+- **client:load** : Hydrate immédiatement au chargement de la page (Priorité: Haute)
+- **client:idle** : Hydrate quand le navigateur est inactif (Priorité: Basse)
+- **client:visible** : Hydrate quand visible dans le viewport (Priorité: Conditionnelle)
+- **client:media** : Hydrate selon une media query CSS (Priorité: Responsive)
+
+## Cas d'usage parfaits pour Astro
+
+✅ **Sites de contenu** : Blogs, sites documentaires, portfolios où le contenu est roi
+
+✅ **Sites marketing** : Landing pages, sites vitrine nécessitant d'excellentes performances SEO
+
+✅ **E-commerce** : Boutiques en ligne avec quelques composants interactifs stratégiques
+
+## Prêt à essayer Astro ?
+
+Astro représente l'avenir du développement web avec ses performances exceptionnelles et sa flexibilité unique. Que vous construisiez un blog, un site e-commerce ou une application complexe, Astro vous offre les outils pour créer des expériences web rapides et modernes.
