@@ -1,19 +1,24 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
+import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [
-    tailwind(),
     react()
   ],
-  site: 'https://pixelperfect-agency.netlify.app', // Remplacez par votre URL de déploiement
+
+  site: 'https://astrojs-fwdrieszp-protasymats-projects.vercel.app/',
   output: 'static',
+
   build: {
     assets: 'assets'
   },
+
   image: {
     domains: ["images.unsplash.com", "via.placeholder.com"]
+  },
+
+  vite: {
+    plugins: [tailwindcss()]
   }
 });

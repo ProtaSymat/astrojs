@@ -1,11 +1,289 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const blogPosts = await getCollection('blog');
+const featuredPosts = blogPosts
+  .filter(post => post.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const services = [
+  {
+    title: "Sites Web Vitrine",
+    description: "Des sites web élégants et performants qui reflètent parfaitement votre image de marque et convertissent vos visiteurs en clients.",
+    icon: "🌐",
+    features: [
+      "Design responsive et moderne",
+      "Optimisation SEO avancée", 
+      "Performance et vitesse optimales",
+      "Intégration CMS personnalisée"
+    ],
+    gradient: "from-blue-600 to-cyan-600"
+  },
+  {
+    title: "Applications Web",
+    description: "Applications web sur mesure alliant performance technique et expérience utilisateur exceptionnelle pour digitaliser vos processus.",
+    icon: "⚡",
+    features: [
+      "Architecture scalable",
+      "Interface utilisateur intuitive",
+      "API REST/GraphQL",
+      "Intégrations tierces avancées"
+    ],
+    gradient: "from-purple-600 to-pink-600"
+  },
+  {
+    title: "E-commerce",
+    description: "Boutiques en ligne complètes avec gestion des stocks, paiements sécurisés et analytics pour maximiser vos ventes.",
+    icon: "🛒",
+    features: [
+      "Gestion complète des produits",
+      "Paiements sécurisés",
+      "Analytics et reporting",
+      "Marketing automation"
+    ],
+    gradient: "from-green-600 to-emerald-600"
+  }
+];
+
+const stats = [
+  { number: "150+", label: "Projets réalisés" },
+  { number: "98%", label: "Clients satisfaits" },
+  { number: "5 ans", label: "D'expérience" },
+  { number: "24/7", label: "Support technique" }
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="PixelPerfect - Agence Web Moderne & Performante">
+  <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-black opacity-20"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+      <div class="absolute top-40 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-2000"></div>
+      <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse animation-delay-4000"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <div class="text-center">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          Créons ensemble votre
+          <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            présence digitale
+          </span>
+        </h1>
+        <p class="text-xl lg:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Agence web spécialisée dans la création de sites et applications modernes, performants et sur mesure. 
+          Transformez vos idées en expériences digitales exceptionnelles.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <a href="/contact" class="bg-white text-blue-900 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-colors text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+            Démarrer un projet
+          </a>
+          <a href="/services" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-900 transition-all text-lg">
+            Découvrir nos services
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          {stats.map((stat) => (
+            <div class="text-center">
+              <div class="text-3xl lg:text-4xl font-bold text-white mb-2">{stat.number}</div>
+              <div class="text-blue-200 text-sm lg:text-base">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+          Nos Services
+        </h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Des solutions complètes pour tous vos besoins digitaux, de la conception à la maintenance.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="/services" class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+          Voir tous nos services
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+            Pourquoi choisir PixelPerfect ?
+          </h2>
+          <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+            Depuis 5 ans, nous accompagnons les entreprises dans leur transformation digitale. 
+            Notre équipe d'experts combine créativité et expertise technique pour créer des solutions 
+            qui dépassent vos attentes.
+          </p>
+          
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start space-x-3">
+              <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Expertise technique</h4>
+                <p class="text-gray-600">Technologies modernes et bonnes pratiques</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-3">
+              <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Accompagnement personnalisé</h4>
+                <p class="text-gray-600">Suivi dédié de A à Z sur chaque projet</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-3">
+              <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900">Performance garantie</h4>
+                <p class="text-gray-600">Sites rapides et optimisés SEO</p>
+              </div>
+            </div>
+          </div>
+          
+          <a href="/about" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium">
+            En savoir plus sur notre équipe
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+        
+        <div class="relative">
+          <img 
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+            alt="Équipe de développeurs collaborant sur un projet"
+            class="rounded-lg shadow-lg"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div>
+                <div class="font-bold text-gray-900">Livraison rapide</div>
+                <div class="text-gray-600 text-sm">Projets livrés en temps record</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {featuredPosts.length > 0 && (
+    <section class="py-16 lg:py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            Articles Récents
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Découvrez nos derniers articles sur les tendances du développement web et nos retours d'expérience.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featuredPosts.map((post) => (
+            <BlogCard 
+              title={post.data.title}
+              description={post.data.description}
+              author={post.data.author}
+              date={post.data.date}
+              image={post.data.image}
+              tags={post.data.tags}
+              slug={post.slug}
+              featured={post.data.featured}
+            />
+          ))}
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="/blog" class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+            Voir tous les articles
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="py-16 lg:py-24 bg-gradient-to-r from-blue-600 to-purple-600">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl lg:text-4xl font-bold text-white mb-6">
+        Prêt à donner vie à votre projet ?
+      </h2>
+      <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+        Contactez-nous dès aujourd'hui pour discuter de vos besoins et obtenir un devis personnalisé. 
+        Notre équipe est là pour transformer vos idées en réalité digitale.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contact" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-colors text-lg shadow-lg">
+          Demander un devis
+        </a>
+        <a href="tel:+33123456789" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-colors text-lg">
+          Nous appeler
+        </a>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  @keyframes pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.4; }
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+</style>
