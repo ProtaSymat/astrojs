@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
+import vercel from '@astrojs/vercel/serverless';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
@@ -7,8 +8,8 @@ export default defineConfig({
     react()
   ],
 
-  site: 'https://astrojs-fwdrieszp-protasymats-projects.vercel.app/',
-  output: 'static',
+  output: 'server', // ou 'hybrid' selon vos besoins
+  adapter: vercel(),
 
   build: {
     assets: 'assets'
